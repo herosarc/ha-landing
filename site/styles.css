@@ -1,0 +1,266 @@
+/* Hero's ARC front door. Warm, plain, competent. Mobile-first. */
+
+:root {
+  --bg: #faf6f0;
+  --surface: #fffdf9;
+  --ink: #2b2320;
+  --muted: #6e6259;
+  --accent: #b3541e;
+  --accent-ink: #8f4014;
+  --line: #e8ddcf;
+  --radius: 14px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  line-height: 1.15;
+  margin: 0 0 0.6em;
+  letter-spacing: -0.01em;
+}
+
+p { margin: 0 0 1em; }
+
+a { color: var(--accent-ink); text-underline-offset: 3px; }
+a:hover { color: var(--accent); }
+
+/* Top bar */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 1rem 1.25rem;
+}
+
+.wordmark {
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 0.8rem 1.6rem;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  border: 1.5px solid transparent;
+  transition: background-color 120ms ease, color 120ms ease, border-color 120ms ease;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+}
+.btn-primary:hover { background: var(--accent-ink); color: #fff; }
+
+.btn-secondary {
+  border-color: var(--ink);
+  color: var(--ink);
+  background: transparent;
+}
+.btn-secondary:hover { border-color: var(--accent); color: var(--accent-ink); }
+
+.btn-small { padding: 0.45rem 1.1rem; font-size: 0.95rem; }
+.btn-big { padding: 1rem 2.4rem; font-size: 1.15rem; }
+
+/* Hero */
+.hero {
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 3.5rem 1.25rem 3rem;
+  text-align: left;
+}
+
+.hero h1 {
+  font-size: clamp(2.3rem, 7vw, 3.4rem);
+  max-width: 14ch;
+}
+
+.caption {
+  font-size: 1.15rem;
+  color: var(--muted);
+  max-width: 34rem;
+}
+
+.bubble {
+  position: relative;
+  display: inline-block;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 0.7rem 1.1rem;
+  margin: 0.75rem 0 1.75rem;
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  box-shadow: 0 2px 6px rgba(43, 35, 32, 0.05);
+}
+.bubble::after {
+  content: "";
+  position: absolute;
+  bottom: -9px;
+  left: 2rem;
+  width: 16px;
+  height: 16px;
+  background: var(--surface);
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  transform: rotate(45deg) skew(10deg, 10deg);
+}
+
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+.cta-row .btn { flex: 1 1 auto; }
+
+@media (min-width: 480px) {
+  .cta-row .btn { flex: 0 0 auto; }
+}
+
+/* Content blocks */
+.block {
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 2.25rem 1.25rem;
+  border-top: 1px solid var(--line);
+}
+
+.block h2 { font-size: clamp(1.6rem, 4.5vw, 2.1rem); max-width: 22ch; }
+.block > p { max-width: 38rem; }
+
+.kicker {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-ink);
+  margin-bottom: 0.75rem;
+}
+
+/* Card (packs) */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.4rem 1.5rem 1.1rem;
+  margin-top: 1.5rem;
+  box-shadow: 0 2px 8px rgba(43, 35, 32, 0.04);
+}
+.card h3 { font-size: 1.2rem; }
+.card p:last-child { margin-bottom: 0.25rem; }
+.card-links { font-weight: 600; }
+
+.sep { color: var(--muted); margin: 0 0.4rem; }
+
+/* Plan */
+.plan {
+  list-style: none;
+  counter-reset: step;
+  margin: 1.25rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.9rem;
+}
+.plan li {
+  counter-increment: step;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem 1rem 3.6rem;
+  position: relative;
+}
+.plan li::before {
+  content: counter(step);
+  position: absolute;
+  left: 1.1rem;
+  top: 1.05rem;
+  width: 1.7rem;
+  height: 1.7rem;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.plan strong { display: block; font-size: 1.05rem; }
+.plan span { color: var(--muted); }
+
+/* Two endings */
+.endings {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+@media (min-width: 640px) {
+  .endings { grid-template-columns: 1fr 1fr; }
+}
+.ending {
+  border-radius: var(--radius);
+  padding: 1.25rem 1.4rem;
+  border: 1px solid var(--line);
+}
+.ending h3 { font-size: 1.15rem; margin-bottom: 0.4rem; }
+.ending p { margin: 0; color: var(--muted); }
+.ending-alone { background: #f3ece2; }
+.ending-guided { background: var(--surface); border-color: var(--accent); }
+.ending-guided h3 { color: var(--accent-ink); }
+
+/* The Call block */
+.block-call { text-align: center; padding-bottom: 3.5rem; }
+.block-call h2, .block-call > p { margin-left: auto; margin-right: auto; }
+.block-call .cta-row { justify-content: center; margin-top: 1.25rem; }
+.alt-path { color: var(--muted); font-size: 0.98rem; margin-top: 1.25rem; }
+
+/* Footer */
+.footer {
+  border-top: 1px solid var(--line);
+  text-align: center;
+  padding: 2rem 1.25rem 2.5rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+.footer p { margin-bottom: 0.4rem; }
+.fine { font-size: 0.85rem; margin-top: 0.75rem; }
+
+/* Call page */
+.callpage {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 3rem 1.25rem 4rem;
+  text-align: center;
+}
+.callpage h1 { font-size: clamp(2rem, 6vw, 2.8rem); }
+.callpage .cta-row { justify-content: center; margin-top: 1.5rem; }
+.note {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-top: 1.5rem;
+}
+.backlink { display: inline-block; margin-top: 2rem; }
