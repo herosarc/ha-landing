@@ -25,7 +25,9 @@ HOUSE-COPY.md    Locked copy doc
 
 ## Deploying
 
-Push to `main`. The workflow in `.github/workflows/pages.yml` uploads `site/` and deploys it to GitHub Pages (it also enables Pages on first run). Local preview:
+**One-time setup (repo admin, one click):** Settings, Pages, Source: "Deploy from a branch", branch `gh-pages`, folder `/ (root)`, Save. The `gh-pages` branch already contains the built site, so the URL goes live right after saving. Enabling Pages via API is not possible with the tokens available to automation here (GitHub returns "Resource not accessible by integration" for site creation), which is why this single manual step exists.
+
+After that: push to `main`. The workflow in `.github/workflows/pages.yml` publishes `site/` to the `gh-pages` branch automatically. Local preview:
 
 ```bash
 cd site && python3 -m http.server 8080
